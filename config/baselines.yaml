@@ -1,0 +1,82 @@
+# AVAAD Baseline Configuration
+# This file tracks the accepted technical debt baselines for your project
+# Version: 2.0
+
+project:
+  name: fin_data_ingestor
+  type: python-fastapi
+  created: 2025-07-26
+
+# Current accepted baselines
+baselines:
+  mypy_errors: 49              # Total MyPy errors allowed
+  mypy_strict_mode: true       # Whether strict mode is enabled
+  test_coverage: 90            # Minimum test coverage percentage
+  security_issues: 0           # Security vulnerabilities allowed
+
+  # Per-component baselines
+  components:
+    api:
+      mypy_errors: 19          # Errors in apps/api/src
+    database:
+      mypy_errors: 30          # Errors in packages/db
+    utils:
+      mypy_errors: 0           # Errors in utils/
+
+# Historical baselines (for tracking progress)
+history:
+  - date: 2025-07-26T10:00:00Z
+    mypy_errors: 63
+    test_coverage: 85
+    note: "Initial baseline before Story 6.1"
+    recorded_by: "system"
+
+  - date: 2025-07-26T14:30:00Z
+    mypy_errors: 49
+    test_coverage: 87
+    note: "After Story 6.1 completion (SQLAlchemy 2.0 migration)"
+    recorded_by: "claude-code"
+
+# Validation rules
+validation:
+  # What constitutes a regression
+  regression_rules:
+    mypy_errors:
+      type: "no_increase"      # Can decrease but not increase
+      block_on_regression: true
+    test_coverage:
+      type: "no_decrease"      # Can increase but not decrease
+      block_on_regression: true
+    security_issues:
+      type: "zero_tolerance"   # Must always be 0
+      block_on_regression: true
+
+  # Grace periods for temporary regressions
+  grace_periods:
+    mypy_errors:
+      allowed_increase: 5      # Allow up to 5 new errors temporarily
+      duration_hours: 24       # Must be fixed within 24 hours
+
+# Agent tracking (which agents worked on what)
+agent_baselines:
+  claude-code:
+    last_update: 2025-07-26T14:30:00Z
+    changes_made:
+      - "Reduced MyPy errors from 63 to 49"
+      - "Enabled strict mode"
+    trust_score: 0.68          # 68% accurate based on history
+
+# Notifications
+alerts:
+  on_regression:
+    enabled: true
+    channels:
+      - console                # Print to terminal
+      - artifact               # Save to validation artifact
+      # - slack                # Future: Slack integration
+      # - email                # Future: Email alerts
+
+  on_improvement:
+    enabled: true
+    celebrate: true            # Show success message
+    auto_update_baseline: false # Require manual acceptance

@@ -13,6 +13,10 @@ baselines:
   mypy_strict_mode: true       # Whether strict mode is enabled
   test_coverage: 90            # Minimum test coverage percentage
   security_issues: 0           # Security vulnerabilities allowed
+  security_alerts: 0           # AI security alerts allowed
+  ai_cost_daily: 50.0          # Daily AI agent budget (USD)
+  ai_cost_weekly: 200.0        # Weekly AI agent budget (USD)
+  ai_cost_monthly: 800.0       # Monthly AI agent budget (USD)
 
   # Per-component baselines
   components:
@@ -49,6 +53,15 @@ validation:
       block_on_regression: true
     security_issues:
       type: "zero_tolerance"   # Must always be 0
+      block_on_regression: true
+    security_alerts:
+      type: "zero_tolerance"   # Must always be 0
+      block_on_regression: true
+    ai_cost_daily:
+      type: "no_increase"      # Budget should not be exceeded
+      block_on_regression: true
+    ai_cost_weekly:
+      type: "no_increase"      # Budget should not be exceeded
       block_on_regression: true
 
   # Grace periods for temporary regressions

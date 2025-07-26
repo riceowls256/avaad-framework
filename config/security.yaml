@@ -1,0 +1,80 @@
+# AVAAD Security Configuration
+# Configuration for AI security detection and monitoring
+
+prompt_injection_patterns:
+  system_override:
+    - "ignore previous instructions"
+    - "system prompt override"
+    - "you are now a different"
+    - "forget your previous role"
+    - "disregard all prior"
+    - "override system prompt"
+    - "new instructions are"
+    - "change your behavior to"
+    
+  jailbreak_attempts:
+    - "dan mode"
+    - "developer mode"
+    - "unfiltered response"
+    - "no restrictions"
+    - "bypass safety"
+    - "uncensored mode"
+    - "do anything now"
+    - "ignore safety guidelines"
+    
+  context_manipulation:
+    - "pretend you are"
+    - "act as if"
+    - "roleplay as"
+    - "imagine you are"
+    - "from now on"
+    - "change your personality"
+    - "become a different"
+    - "switch to mode"
+    
+  code_injection:
+    - "execute this code"
+    - "run this command"
+    - "import os"
+    - "import subprocess"
+    - "eval("
+    - "exec("
+    - "subprocess.call"
+    - "os.system"
+    - "__import__"
+    - "getattr"
+
+severity_thresholds:
+  low: 0.3
+  medium: 0.6
+  high: 0.8
+  critical: 0.95
+
+alert_settings:
+  log_to_file: true
+  print_to_console: true
+  block_action: false
+  email_alerts: false
+  slack_alerts: false
+
+monitoring:
+  # How often to scan agent interactions (in minutes)
+  scan_frequency: 30
+  
+  # Retention period for security logs (in days)
+  log_retention: 30
+  
+  # Enable automatic scanning
+  auto_scan: true
+
+whitelist:
+  # Trusted agents that bypass some checks
+  trusted_agents:
+    - "claude-code"
+    - "gpt-4"
+  
+  # Safe patterns that should not trigger alerts
+  safe_patterns:
+    - "claude.ai"
+    - "anthropic.com"
+    - "openai.com"

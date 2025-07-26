@@ -1,0 +1,49 @@
+{
+  "name": "avaad-framework",
+  "version": "2.1.0",
+  "description": "Automated Verification for AI-Assisted Development - AI security and cost management",
+  "main": "index.js",
+  "bin": {
+    "avaad": "bin/avaad.js",
+    "avaad-security": "bin/avaad-security.js",
+    "avaad-cost": "bin/avaad-cost.js"
+  },
+  "scripts": {
+    "install": "node ./scripts/install.js",
+    "update": "node ./scripts/update.js",
+    "validate": "python tools/mvp.js",
+    "security": "python tools/security-analyzer.py",
+    "cost": "python tools/cost-reporter.py"
+  },
+  "keywords": [
+    "ai",
+    "security",
+    "cost-management",
+    "validation",
+    "claude",
+    "gpt",
+    "development-tools",
+    "verification"
+  ],
+  "author": "AVAAD Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/riceowls256/avaad-framework.git"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "python": ">=3.7"
+  },
+  "files": [
+    "bin/",
+    "tools/",
+    "core/",
+    "config/",
+    "docs/",
+    "scripts/",
+    "README.md"
+  ],
+  "dependencies": {},
+  "devDependencies": {}
+}

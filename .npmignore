@@ -1,0 +1,14 @@
+.git/
+.gitignore
+*.pyc
+__pycache__/
+.venv/
+venv/
+.env
+.avaad/
+logs/
+artifacts/
+*.log
+.DS_Store
+docs/troubleshooting/raw-feedback/
+docs/feedback/raw-feedback/
